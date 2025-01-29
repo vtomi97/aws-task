@@ -10,10 +10,18 @@ class HelloWorld(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        return {
-            "statusCode": 200,
-            "message": "Hello from Lambda"
-        }
+        path = event.get('path')
+        method = event.get('httpMethod')
+        if path == '/hello' and method == 'GET':
+            return {
+                "statusCode": 200,
+                "message": "Hello from Lambda"
+            }
+        else:
+            return {
+                "statusCode": 400,
+                "message": "Bad request syntax or unsupported method. Request path: " + path + ". HTTP method: " + method
+            }
     
 
 HANDLER = HelloWorld()
