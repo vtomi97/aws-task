@@ -1,5 +1,6 @@
 from commons.log_helper import get_logger
 from commons.abstract_lambda import AbstractLambda
+import json
 
 _LOG = get_logger(__name__)
 
@@ -12,7 +13,7 @@ class HelloWorld(AbstractLambda):
     def handle_request(self, event, context):
         return {
             "statusCode": 200,
-            "message": "Hello from Lambda"
+            "body": json.dumps({"statusCode" : 200, "message": "Hello from Lambda"})
         }
     
 
