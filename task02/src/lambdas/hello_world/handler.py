@@ -11,8 +11,8 @@ class HelloWorld(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        path = event.path('path', '')
-        method = event.get("httpMethod" , "")
+        path = event.get('path')
+        method = event.get("httpMethod")
         
         if path == '/hello' and method == 'GET':
             return {
