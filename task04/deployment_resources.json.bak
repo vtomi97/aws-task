@@ -4,7 +4,7 @@
       "Statement": [
         {
           "Action": [
-			"sqs:*",
+			"sqs:*"
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
