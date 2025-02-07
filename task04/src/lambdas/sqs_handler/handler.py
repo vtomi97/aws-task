@@ -10,9 +10,9 @@ class SqsHandler(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        # for record in event["Records"]:
-            # body = record["body"]
-            # print(body)
+        for record in event["Records"]:
+            body = record["body"]
+            print(body)
         return 200
     
 

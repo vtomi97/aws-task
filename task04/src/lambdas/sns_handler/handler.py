@@ -4,19 +4,19 @@ from commons.abstract_lambda import AbstractLambda
 _LOG = get_logger(__name__)
 
 
-class SqsHandler(AbstractLambda):
+class SnsHandler(AbstractLambda):
 
     def validate_request(self, event) -> dict:
         pass
         
     def handle_request(self, event, context):
-        # for record in event["Records"]:
-            # body = record["body"]
-            # print(body)
+        for record in event["Records"]:
+            sns_message = record['Sns']['Message']
+            print(sns_message)
         return 200
     
 
-HANDLER = SqsHandler()
+HANDLER = SnsHandler()
 
 
 def lambda_handler(event, context):
