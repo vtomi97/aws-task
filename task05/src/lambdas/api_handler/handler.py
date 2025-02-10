@@ -2,6 +2,7 @@ from commons.log_helper import get_logger
 from commons.abstract_lambda import AbstractLambda
 import boto3
 import uuid
+import json
 from datetime import datetime
 
 
@@ -18,7 +19,7 @@ class ApiHandler(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        id = str(uuid.uuid4())
+        id = uuid.uuid4()
         current_datetime = datetime.now()
         iso_format = current_datetime.isoformat()
 
@@ -37,7 +38,10 @@ class ApiHandler(AbstractLambda):
                 
         return {
             "statusCode": 201,
-            "event": item
+            "body": json.dumps({
+                "statusCode": 201,
+                "event": item
+            })
         }
     
 
