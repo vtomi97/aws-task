@@ -20,30 +20,6 @@ class ApiHandler(AbstractLambda):
         
     def handle_request(self, event, context):
         return event
-        id = uuid.uuid4()
-        current_datetime = datetime.now()
-        iso_format = current_datetime.isoformat()
-
-        if 'body' in event:
-            data = json.loads(event['body'])
-        else:
-            data = {}
-        item = {
-            "id": id,
-            "principalId": data["principalId"],
-            "createdAt": iso_format,
-            "body": data["content"]
-        }
-        
-        #table.put_item(Item=item)
-                
-        return {
-            "statusCode": 201,
-            "body": json.dumps({
-                "statusCode": 201,
-                "event": item
-            })
-        }
     
 
 HANDLER = ApiHandler()

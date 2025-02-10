@@ -19,7 +19,8 @@ class ApiHandler(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        return event
+        return {"statusCode": 201}
+        
     
 
 HANDLER = ApiHandler()
