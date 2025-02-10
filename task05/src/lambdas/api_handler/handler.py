@@ -16,12 +16,10 @@ class ApiHandler(AbstractLambda):
     
         dynamodb = boto3.resource('dynamodb') 
         table = dynamodb.Table('Event')
-
-        incoming_event = event["event"]
                 
         new_item = {
-            "principalId": incoming_event["principalId"],
-            "event": incoming_event["content"]
+            "principalId": event["principalId"],
+            "event": event["content"]
         }
         
         table.put_item(Item=new_item)
