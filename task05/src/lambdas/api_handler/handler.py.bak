@@ -1,6 +1,8 @@
 from commons.log_helper import get_logger
 from commons.abstract_lambda import AbstractLambda
 import json
+import boto3 
+
 
 _LOG = get_logger(__name__)
 
@@ -11,16 +13,27 @@ class ApiHandler(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
+    
+        dynamodb = boto3.resource('dynamodb') 
+        table = dynamodb.Table('Event')
+
+        incoming_event = event["event"]
+        
+        new_event = {
+            "principalId": incoming_event["principalId"],
+            "event": incoming_event["content"]
+        }
+        
         response = {
             "statusCode": 201,
             "body": json.dumps({
-                "message": "TEST"
+                "event": new_event
             }),
             "headers": {
                 "Content-Type": "application/json"
             }
         }
-        return 200
+        return response
     
 
 HANDLER = ApiHandler()

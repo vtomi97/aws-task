@@ -29,7 +29,16 @@
     "resource_type": "api_gateway",
     "deploy_stage": "api",
     "dependencies": [],
-    "resources": {},
+    "resources": {
+		"/events": {
+			"enable_cors": false,
+			"POST": {
+				"authorization_type": "NONE",
+				"integration_type": "lambda",
+				"lambda_name": "api_handler"
+			}
+		}
+	},
     "tags": {}
   },
   "Events": {
