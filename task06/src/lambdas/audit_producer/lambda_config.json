@@ -13,7 +13,7 @@
 	{
 		"resource_type": "dynamodb_trigger",
 		"target_table": "Configuration",
-		"batch_size": 123
+		"batch_size": 1
 	}
   ],
   "env_variables": {},
