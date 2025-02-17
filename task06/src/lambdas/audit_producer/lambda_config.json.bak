@@ -8,8 +8,19 @@
   "memory": 128,
   "timeout": 100,
   "lambda_path": "lambdas\\audit_producer",
-  "dependencies": [],
-  "event_sources": [],
+  "dependencies": [
+	{
+		"resource_type": "dynamodb_stream",
+		"resource_name": "Configuration"
+	}
+  ],
+  "event_sources": [
+	{
+		"resource_type": "dynamodb_trigger",
+		"target_table": "Configuration",
+		"batch_size": 1
+	}
+  ],
   "env_variables": {},
   "publish_version": true,
   "alias": "${lambdas_alias_name}",
