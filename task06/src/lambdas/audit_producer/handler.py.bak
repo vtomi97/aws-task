@@ -28,6 +28,7 @@ class ApiHandler(AbstractLambda):
         new_item = {
             "id": id,
             "itemKey": event["key"],
+            "body": event["content"],
             "modificationTime": iso_format,
             "newValue": {
                 "key": event["key"],
