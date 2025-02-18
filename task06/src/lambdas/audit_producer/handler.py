@@ -35,8 +35,8 @@ class AuditProducer(AbstractLambda):
             
             if event_name == "INSERT":
                 new_image = record["dynamodb"]["NewImage"]
-                key = new_image["value"]["N"]
-                value = new_image["key"]["S"]
+                key = new_image["key"]["S"]
+                value = new_image["value"]["N"]
             elif event_name == "MODIFY":
                 print("MODIFY")
             else:

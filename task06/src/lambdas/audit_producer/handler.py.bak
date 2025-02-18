@@ -47,7 +47,7 @@ class AuditProducer(AbstractLambda):
         
         new_item = {
             "id": id,
-            "itemKey": event["key"],
+            "itemKey": key,
             "modificationTime": iso_format,
             "newValue": {
                 "key": key,
