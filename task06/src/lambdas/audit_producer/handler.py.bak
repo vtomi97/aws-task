@@ -39,6 +39,15 @@ class AuditProducer(AbstractLambda):
                 new_image = record["dynamodb"]["NewImage"]
                 key = new_image["key"]["S"]
                 value = new_image["value"]["N"]
+                new_item = {
+                    "id": id,
+                    "itemKey": key,
+                    "modificationTime": iso_format,
+                    "newValue": {
+                        "key": new_image["key"]["S"],
+                        "value": new_image["value"]["N"]
+                    }
+                }
             elif event_name == "MODIFY":
                 print("MODIFY")
             else:

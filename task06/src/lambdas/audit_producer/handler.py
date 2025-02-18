@@ -26,48 +26,45 @@ class AuditProducer(AbstractLambda):
         iso_format = current_datetime.isoformat()
         
         print(event)
-                        
+        
+        data = event["value"]
+        
+        key = ""
+        value = 0
+        
         for record in event["Records"]:
             event_name = record["eventName"]
             
             if event_name == "INSERT":
                 new_image = record["dynamodb"]["NewImage"]
-                item = {
-                    "id": id,
-                    "itemKey": key,
-                    "modificationTime": iso_format,
-                    "newValue": {
-                        "key": new_image["key"]["S"],
-                        "value": new_image["value"]["N"]
-                    }
-                }
-                table.put_item(Item=item)
+                key = new_image["key"]["S"]
+                value = new_image["value"]["N"]
             elif event_name == "MODIFY":
-                new_image = record["dynamodb"]["NewImage"]
-                old_image = record["dynamodb"]["OldImage"]
-                if new_image["key"]["S"] != old_image["key"]["S"]:
-                    item = {
-                        "id": id,
-                        "itemKey": key,
-                        "modificationTime": iso_format,
-                        "updatedAttribute": "key",
-                        "oldValue": old_image["key"]["S"],
-                        "newValue": new_image["key"]["S"]
-                    }
-                    table.put_item(Item=item)
-                elif new_image["value"]["N"] != old_image["value"]["N"]:
-                    item = {
-                        "id": id,
-                        "itemKey": key,
-                        "modificationTime": iso_format,
-                        "updatedAttribute": "value",
-                        "oldValue": old_image["value"]["N"],
-                        "newValue": new_image["value"]["N"]
-                    }
-                    table.put_item(Item=item)
+                print("MODIFY")
             else:
                 print(event_name)
-                                
+                        
+        new_item = {
+            "id": id,
+            "itemKey": key,
+            "modificationTime": iso_format,
+            "newValue": {
+                "key": key,
+                "value": int(value)
+            }
+        }
+        
+        table.put_item(Item=new_item)
+        
+        response = {
+            "statusCode": 201,
+            "body": json.dumps({
+                "event": new_item
+            }),
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
         return 200
     
 
