@@ -38,7 +38,7 @@ class AuditProducer(AbstractLambda):
                     "modificationTime": iso_format,
                     "newValue": {
                         "key": new_image["key"]["S"],
-                        "value": value = new_image["value"]["N"]
+                        "value": new_image["value"]["N"]
                     }
                 }
                 table.put_item(Item=item)
