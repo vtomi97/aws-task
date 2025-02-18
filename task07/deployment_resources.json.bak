@@ -38,9 +38,7 @@
   "appsync_iam": {
     "resource_type": "iam_role",
     "principal_service": "appsync",
-    "predefined_policies": [
-		"DynamoDBTableAccess"
-	],
+    "predefined_policies": [],
     "custom_policies": [],
     "allowed_accounts": [],
     "instance_profile": false,
