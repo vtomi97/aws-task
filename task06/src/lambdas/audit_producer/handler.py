@@ -24,14 +24,34 @@ class AuditProducer(AbstractLambda):
         
         current_datetime = datetime.now()
         iso_format = current_datetime.isoformat()
+        
+        print(event)
+        
+        key = ""
+        value = 0
+        
+        for record in event["Records"]:
+            event_name = record["eventName"]
+            
+            if event_name == "INSERT":
+                new_image = record["dynamodb"]["NewImage"]
+                key = new_image["value"]["N"]
+                value = new_image["key"]["S"]
+            elif event_name == "MODIFY":
+                print("MODIFY")
+            else:
+                print(event_name)
                 
+        print("KEY: " + key)
+        print("VALUE: " + value)
+        
         new_item = {
             "id": id,
-            "itemKey": event["key"],
+            "itemKey": key,
             "modificationTime": iso_format,
             "newValue": {
-                "key": event["key"],
-                "value": event["value"]
+                "key": key,
+                "value": value
             }
         }
         
