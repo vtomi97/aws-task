@@ -10,7 +10,7 @@ from datetime import datetime
 _LOG = get_logger(__name__)
 
 
-class ApiHandler(AbstractLambda):
+class AuditProducer(AbstractLambda):
 
     def validate_request(self, event) -> dict:
         pass
@@ -49,7 +49,7 @@ class ApiHandler(AbstractLambda):
         return 200
     
 
-HANDLER = ApiHandler()
+HANDLER = AuditProducer()
 
 
 def lambda_handler(event, context):
