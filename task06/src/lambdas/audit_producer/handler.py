@@ -26,45 +26,27 @@ class AuditProducer(AbstractLambda):
         iso_format = current_datetime.isoformat()
         
         print(event)
-        
-        data = event["value"]
-        
-        key = ""
-        value = 0
-        
+                        
         for record in event["Records"]:
             event_name = record["eventName"]
             
             if event_name == "INSERT":
                 new_image = record["dynamodb"]["NewImage"]
-                key = new_image["key"]["S"]
-                value = new_image["value"]["N"]
+                item = {
+                    "id": id,
+                    "itemKey": new_image["key"]["S"],
+                    "modificationTime": iso_format,
+                    "newValue": {
+                        "key": new_image["key"]["S"],
+                        "value": value = new_image["value"]["N"]
+                    }
+                }
+                table.put_item(Item=item)
             elif event_name == "MODIFY":
                 print("MODIFY")
             else:
                 print(event_name)
                         
-        new_item = {
-            "id": id,
-            "itemKey": key,
-            "modificationTime": iso_format,
-            "newValue": {
-                "key": key,
-                "value": int(value)
-            }
-        }
-        
-        table.put_item(Item=new_item)
-        
-        response = {
-            "statusCode": 201,
-            "body": json.dumps({
-                "event": new_item
-            }),
-            "headers": {
-                "Content-Type": "application/json"
-            }
-        }
         return 200
     
 
