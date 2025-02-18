@@ -4,6 +4,7 @@
       "Statement": [
         {
           "Action": [
+			"dynamodb:*",
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
