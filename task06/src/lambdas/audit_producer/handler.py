@@ -38,12 +38,33 @@ class AuditProducer(AbstractLambda):
                     "modificationTime": iso_format,
                     "newValue": {
                         "key": new_image["key"]["S"],
-                        "value": new_image["value"]["N"]
+                        "value": int(new_image["value"]["N"])
                     }
                 }
                 table.put_item(Item=item)
             elif event_name == "MODIFY":
-                print("MODIFY")
+                new_image = record["dynamodb"]["NewImage"]
+                old_image = record["dynamodb"]["OldImage"]
+                if new_image["key"]["S"] != old_image["key"]["S"]:
+                    item = {
+                        "id": id,
+                        "itemKey": new_image["key"]["S"],
+                        "modificationTime": iso_format,
+                        "updatedAttribute": "key",
+                        "oldValue": old_image["key"]["S"],
+                        "newValue": new_image["key"]["S"]
+                    }
+                    table.put_item(Item=item)
+                elif new_image["value"]["N"] != old_image["value"]["N"]:
+                    item = {
+                        "id": id,
+                        "itemKey": new_image["key"]["S"],
+                        "modificationTime": iso_format,
+                        "updatedAttribute": "value",
+                        "oldValue": int(old_image["value"]["N"]),
+                        "newValue": int(new_image["value"]["N"])
+                    }
+                    table.put_item(Item=item)
             else:
                 print(event_name)
                         
