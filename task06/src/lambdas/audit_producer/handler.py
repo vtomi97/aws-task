@@ -27,6 +27,8 @@ class AuditProducer(AbstractLambda):
         
         print(event)
         
+        #data = event["value"]
+        
         key = ""
         value = 0
         
@@ -41,17 +43,14 @@ class AuditProducer(AbstractLambda):
                 print("MODIFY")
             else:
                 print(event_name)
-                
-        print("KEY: " + key)
-        print("VALUE: " + value)
-        
+                        
         new_item = {
             "id": id,
             "itemKey": key,
             "modificationTime": iso_format,
             "newValue": {
                 "key": key,
-                "value": value
+                "value": int(value)
             }
         }
         
