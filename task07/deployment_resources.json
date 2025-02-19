@@ -40,7 +40,7 @@
     "principal_service": "appsync",
     "predefined_policies": [],
     "custom_policies": [
-		"user_id:0b67c2a2"
+		"lambda-basic-execution"
 	],
     "allowed_accounts": [],
     "instance_profile": false,
