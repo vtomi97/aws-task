@@ -35,12 +35,12 @@
     "autoscaling": [],
     "tags": {}
   },
-  "appsync_role": {
+  "appsync_iam": {
     "resource_type": "iam_role",
     "principal_service": "appsync",
     "predefined_policies": [],
     "custom_policies": [
-		"lambda-basic-execution"
+		"user_id:0b67c2a2"
 	],
     "allowed_accounts": [],
     "instance_profile": false,
