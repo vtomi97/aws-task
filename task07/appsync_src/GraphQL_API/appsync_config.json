@@ -15,7 +15,16 @@
       }
     }
   ],
-  "resolvers": [],
+  "resolvers": [
+    {
+      "kind": "UNIT",
+      "type_name": "Query",
+      "field_name": "getEvent",
+      "data_source_name": "data_source",
+      "runtime": "JS",
+      "code_path": "resolvers/query/getevent/code.js"
+    }
+  ],
   "functions": [],
   "log_config": {
     "logging_enabled": false,
