@@ -2,7 +2,7 @@
 # schema definition language (SDL) here.
 
 type Query {
-	getEvent(): String
+	getEvent: String
 }
 
 schema {
