@@ -18,11 +18,11 @@
   "resolvers": [
     {
       "kind": "UNIT",
-      "type_name": "Query",
-      "field_name": "getEvent",
+      "type_name": "Mutation",
+      "field_name": "createEvent",
       "data_source_name": "data_source",
       "runtime": "JS",
-      "code_path": "resolvers/query/getevent/code.js"
+      "code_path": "resolvers/mutation/createevent/code.js"
     }
   ],
   "functions": [],
