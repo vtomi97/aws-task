@@ -1,12 +1,13 @@
-import { utils } from '@aws-appsync/utils';
-import * as ddb from '@aws-appsync/utils/dynamodb'
+import { util } from '@aws-appsync/utils';
+import * as ddb from '@aws-appsync/utils/dynamodb';
 
 
 export function request(ctx) {
-    return ddb.put({
-		key: ctx.args.input,
-		item: "TEST"
-	});
+    //const { id = util.autoId(), ...item } = ctx.args
+	return ddb.put({
+		key: util.autoId(),
+		item: "TEST-ITEM"
+	})
 }
 
 export function response(ctx) {
