@@ -12,5 +12,8 @@ export function request(ctx) {
 
 export function response(ctx) {
     // Update with response logic
-    return ctx.result;
+    return {
+		"id": "TEST-ID",
+		"date": "VALAMI"
+	};
 }
