@@ -1,15 +1,15 @@
 # Define the structure of your API with the GraphQL
 # schema definition language (SDL) here.
 
-tpye Mutation {
+type Mutation {
 	createEvent(input: String): String
 }
 
 type Query {
-	getEvent(id: String): String
+	getEvent(testItem: String): String
 }
 
 schema {
-	mutation: Mutation
 	query: Query
+	mutation: Mutation
 }
