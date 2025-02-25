@@ -13,7 +13,7 @@ export function request(ctx) {
 export function response(ctx) {
     // Update with response logic
     return {
-		"id": "TEST-ID",
-		"date": "VALAMI"
-	};
+		"key": "test-key",
+		"date": "test-date"
+	}
 }
