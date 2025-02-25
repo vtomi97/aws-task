@@ -1,11 +1,25 @@
 # Define the structure of your API with the GraphQL
 # schema definition language (SDL) here.
 
+type CreateEventInput {
+	userId: Int!
+	payload: AWSJSON!
+}
+
+type CreateEventResponse {
+	response: String
+}
+
+type Mutation {
+	createEvent(input: CreateEventInput): CreateEventResponse
+}
+
 type Query {
-	getEvent: String
+	test: String
 }
 
 schema {
+	mutation: Mutation
 	query: Query
 }
     
