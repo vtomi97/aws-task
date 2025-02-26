@@ -3,10 +3,16 @@
 
 input CreateEventInput {
 	userId: Int!
+	payload: AWSJSON!
 }
 
 type CreateEventResponse {
 	id: String
+}
+
+type Event {
+	id: ID!
+	userId: Int!
 }
 
 type Mutation {
@@ -14,7 +20,7 @@ type Mutation {
 }
 
 type Query {
-	getEvent(testItem: String): String
+	getEvent(id: String): Event
 }
 
 schema {
