@@ -1,6 +1,6 @@
 ## Pass back the result from DynamoDB. **
                 $util.toJson({
-					"id": "VALAMI",
-					"createdAt": "DATE"
+					"id": $ctx.result.id,
+					"createdAt": $ctx.result.createdAt
 				})
                 
