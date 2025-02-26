@@ -3,11 +3,14 @@
 
 input CreateEventInput {
 	userId: Int!
-	payload: AWSJSON!
+}
+
+type CreateEventResponse {
+	id: String
 }
 
 type Mutation {
-	createEvent(input: CreateEventInput): String
+	createEvent(input: CreateEventInput): CreateEventResponse
 }
 
 type Query {
