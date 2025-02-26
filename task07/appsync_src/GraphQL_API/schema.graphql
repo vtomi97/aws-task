@@ -3,7 +3,7 @@
 
 input CreateEventInput {
 	userId: Int!
-	payload: AWSJSON!
+	payLoad: AWSJSON!
 }
 
 type CreateEventResponse {
