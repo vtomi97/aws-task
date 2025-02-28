@@ -16,7 +16,7 @@
 	}
   ],
   "env_variables": {
-	  "target_bucket": "${target_bucket}",
+	  "target_bucket": "${target_bucket}"
   },
   "publish_version": true,
   "alias": "${lambdas_alias_name}",
