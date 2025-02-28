@@ -16,7 +16,7 @@ class UuidGenerator(AbstractLambda):
         current_datetime = datetime.now()
         s3_client = boto3.client('s3')
         bucket_name = os.environ.get('target_bucket')
-        file_name = current_datetime.isoformat()
+        file_name = "testFile.txt" # current_datetime.isoformat()
         file_content = "TESTFILE"
         s3_client.put_object(
             Bucket=bucket_name,
