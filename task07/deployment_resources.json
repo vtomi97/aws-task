@@ -38,8 +38,8 @@
   "appsync_iam": {
     "resource_type": "iam_role",
     "principal_service": "appsync",
-    "predefined_policies": ["AWSAppSyncInvokeFullAccess"],
-    "custom_policies": [],
+    "predefined_policies": [],
+    "custom_policies": ["lambda-basic-execution"],
     "allowed_accounts": [],
     "instance_profile": false,
     "permissions_boundary": "",
