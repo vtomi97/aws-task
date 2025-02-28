@@ -1,16 +1,6 @@
 # Define the structure of your API with the GraphQL
 # schema definition language (SDL) here.
 
-
-type Meta {
-	key1: Int
-	key2: String
-}
-
-type PayLoad {
-	meta: Meta
-}
-
 type Event {
 	id: ID!
 	userId: Int!
