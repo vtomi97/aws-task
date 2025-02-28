@@ -18,12 +18,11 @@ class UuidGenerator(AbstractLambda):
         id_array = []
         for i in range(10):
             id_array.append(str(uuid.uuid4()))
-        json_data = {"id": id_array}
+        json_data = {"ids": id_array}
         current_datetime = datetime.now()
         s3_client = boto3.client('s3')
         bucket_name = os.environ.get('target_bucket')
         file_name = current_datetime.isoformat()
-        file_content = "TESTFILE"
         s3_client.put_object(
             Bucket=bucket_name,
             Key=file_name,
