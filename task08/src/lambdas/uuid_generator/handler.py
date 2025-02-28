@@ -15,10 +15,10 @@ class UuidGenerator(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        #id_array = []
-        #for i in range(10):
-         #   id_array.append(str(uuid.uuid4()))
-        json_data = {"id": "test"}
+        id_array = []
+        for i in range(10):
+            id_array.append(str(uuid.uuid4()))
+        json_data = {"id": id_array}
         current_datetime = datetime.now()
         s3_client = boto3.client('s3')
         bucket_name = os.environ.get('target_bucket')
