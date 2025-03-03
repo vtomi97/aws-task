@@ -10,10 +10,6 @@ class ApiHandler(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        """
-        Explain incoming event here
-        """
-        # todo implement business logic
         return 200
     
 
