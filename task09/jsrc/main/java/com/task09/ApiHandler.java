@@ -18,7 +18,7 @@ import java.util.Map;
 	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
 )
 
-@lambdaLayer(
+@LambdaLayer(
 	layerName = "sdk-layer",
 	libraries = {},
 	runtime = DeploymentRuntime.JAVA11,
