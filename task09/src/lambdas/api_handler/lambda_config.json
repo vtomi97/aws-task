@@ -18,6 +18,5 @@
   },
   "ephemeral_storage": 512,
   "logs_expiration": "${logs_expiration}",
-  "tags": {},
-  "layers": {"oe_layer"}
+  "tags": {}
 }
